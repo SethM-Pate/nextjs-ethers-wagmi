@@ -1,0 +1,1 @@
+export { SecureTurnkeyWalletCard } from './SecureTurnkeyWalletCard';

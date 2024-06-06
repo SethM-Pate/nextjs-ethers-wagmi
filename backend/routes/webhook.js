@@ -1,15 +1,15 @@
+// routes/webhook.js
 const express = require('express');
-const bodyParser = require('body-parser');
 const router = express.Router();
 
-// Use bodyParser middleware to parse JSON bodies
-router.use(bodyParser.json());
-
-// Define a route to handle webhook POST requests
+// Define the webhook endpoint
 router.post('/webhook', (req, res) => {
-    console.log('Webhook received:', req.body);
-    // Respond to the webhook sender to confirm the payload was received successfully
-    res.status(200).send('Payload received');
+    const event = req.body;
+    console.log('Received webhook event:', event);
+
+    // Process the webhook event here
+
+    res.status(200).send('Webhook received');
 });
 
 module.exports = router;

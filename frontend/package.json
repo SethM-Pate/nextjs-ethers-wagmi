@@ -1,31 +1,41 @@
 {
-  "name": "@dynamic-labs/react-18-ethers-wagmi",
-  "version": "0.1.0",
+  "name": "frontend",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@dynamic-labs/algorand": "^1.1.4",
-    "@dynamic-labs/blocto-evm": "^1.0.0",
-    "@dynamic-labs/cosmos": "^1.0.0",
-    "@dynamic-labs/ethereum": "^1.2.1",
-    "@dynamic-labs/ethereum-aa": "^1.2.1",
-    "@dynamic-labs/ethers-v5": "^1.1.4",
-    "@dynamic-labs/flow": "^1.0.0",
-    "@dynamic-labs/magic": "^1.0.0",
-    "@dynamic-labs/sdk-react-core": "^1.2.1",
-    "@dynamic-labs/solana": "^1.0.0",
-    "@dynamic-labs/starknet": "^1.0.0",
-    "@dynamic-labs/wagmi-connector": "^1.0.0",
-    "@types/node": "20.8.7",
-    "@types/react": "18.2.21",
-    "@types/react-dom": "18.2.7",
-    "autoprefixer": "10.4.15",
-    "next": "13.5.6",
-    "eslint": "8.51.0",
-    "eslint-config-next": "13.5.6",
-    "postcss": "8.4.31",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "tailwindcss": "3.3.3",
-    "typescript": "5.2.2"
+    "@dynamic-labs/ethereum": "^1.0.0",
+    "@dynamic-labs/ethereum-aa": "^1.0.0",
+    "@dynamic-labs/sdk-react-core": "^1.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "^3.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "css-loader": "^7.1.1",
+    "style-loader": "^4.0.0"
   }
 }

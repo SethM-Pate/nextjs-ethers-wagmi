@@ -1,23 +1,41 @@
-version: '3.8'
+version: '4.30.0'
 
 services:
-  app:
-    build: .
-    container_name: my_app
+  frontend:
+    build: ./frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+  backend:
+    build: ./backend
     ports:
       - "3000:3000"
     depends_on:
-      - db
+      - my_db
+    networks:
+      - app-network
     environment:
-      MONGO_URI: mongodb://db:27017/mydatabase
+      - DATABASE_URL=mongodb://my_db:27017/yourdbname
+      - WEBHOOK_SECRET=your-webhook-secret
 
-  db:
+  my_db:
     image: mongo:latest
-    container_name: my_db
-    ports:
-      - "27017:27017"
     volumes:
       - mongo-data:/data/db
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD-SHELL", "mongo --eval 'db.adminCommand(\"ping\")'"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
 
 volumes:
   mongo-data:
+
+networks:
+  app-network:

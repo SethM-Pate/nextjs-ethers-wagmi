@@ -1,0 +1,22 @@
+import { ButtonHTMLAttributes, FC, MouseEventHandler, ReactNode } from 'react';
+import { TypographyProps } from '../Typography/Typography.types';
+import { CopyKey } from '../../shared';
+type ButtonVariant = 'primary' | 'secondary' | 'tertiary' | 'brand-primary';
+type ButtonPadding = 'small' | 'medium' | 'large' | 'none' | 'default' | 'login-screen-height';
+export type ButtonProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'onClick'> & {
+    buttonClassName?: string;
+    buttonPadding?: ButtonPadding;
+    buttonVariant?: ButtonVariant;
+    dataTestId?: string;
+    disabled?: boolean;
+    endSlot?: JSX.Element;
+    expanded?: boolean;
+    feedback?: ReactNode;
+    showInternalLoading?: boolean;
+    loading?: boolean;
+    startSlot?: JSX.Element;
+    typographyProps?: Omit<TypographyProps, 'as'>;
+    onClick?: MouseEventHandler<HTMLButtonElement> | (() => Promise<void>);
+} & CopyKey;
+export declare const Button: FC<ButtonProps>;
+export {};

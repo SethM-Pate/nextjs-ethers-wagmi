@@ -1,0 +1,1 @@
+export { createOwnerWallet } from './createOwnerWallet';

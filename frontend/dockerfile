@@ -13,12 +13,19 @@ RUN npm install
 # Copy the rest of your application code
 COPY . .
 
-# Build the React application
-RUN npm run build
+# Ensure the Babel and Webpack configuration files are copied
+COPY babel.config.js ./
+COPY webpack.config.js ./
+
+# Install Babel CLI, Webpack, and necessary plugins/presets
+RUN npm install --save-dev @babel/core @babel/cli @babel/preset-env @babel/preset-react @babel/plugin-transform-modules-commonjs webpack webpack-cli babel-loader css-loader style-loader
+
+# Build the React application using Webpack
+RUN npx webpack --config webpack.config.js
 
 # Use a basic nginx image to serve the built application
 FROM nginx:alpine
-COPY --from=0 /app/build /usr/share/nginx/html
+COPY --from=0 /app/dist /usr/share/nginx/html
 
 # Expose port 80
 EXPOSE 80
