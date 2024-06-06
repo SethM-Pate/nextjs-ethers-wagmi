@@ -5,7 +5,7 @@ const webhookRoutes = require('./routes/webhook'); // Ensure this path is correc
 // Use the webhook routes
 app.use(webhookRoutes);
 
-const PORT = process.env.PORT || 3000; // Choose a port to listen on
+const PORT = process.env.PORT || 3001; // Changed port number to 3001
 
 // Start the server and listen on all network interfaces
 app.listen(PORT, '0.0.0.0', () => {
