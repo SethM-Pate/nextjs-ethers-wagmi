@@ -1,11 +1,20 @@
 const express = require('express');
 const app = express();
-const webhookRoutes = require('./routes/webhook'); // Ensure this path is correct
+const webhookRoutes = require('./backend/routes/webhook'); // Ensure this path is correct
+
+// Middleware to parse JSON bodies
+app.use(express.json());
 
 // Use the webhook routes
-app.use(webhookRoutes);
+app.use('/webhook', webhookRoutes); // Ensure '/webhook' is the base path
 
-const PORT = process.env.PORT || 3001; // Changed port number to 3001
+// Error handling middleware
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something broke!');
+});
+
+const PORT = process.env.PORT || 3002; // Changed port number to 3002
 
 // Start the server and listen on all network interfaces
 app.listen(PORT, '0.0.0.0', () => {
